@@ -14,5 +14,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('layouts.home');
+})->name('home');
+
+Route::prefix('/problema')->group(function () {
+    Route::get('/um', 'HomeController@problemaUm')->name('problema-um');
+    Route::get('/dois', 'HomeController@problemaDois')->name('problema-dois');
+    Route::get('/tres', 'HomeController@problemaTres')->name('problema-tres');
+    Route::get('/quatro', 'HomeController@problemaQuatro')->name('problema-quatro');
+    Route::post('/quatro/resolucao', 'ProblemaQuatroController@resolucao')->name('problema-quatro-resolucao');
 });
